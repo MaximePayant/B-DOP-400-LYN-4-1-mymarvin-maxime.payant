@@ -3,8 +3,40 @@ jenkins:
     - "JNLP4-connect"
     - "Ping"
   authorizationStrategy:
-    loggedInUsersCanDoAnything:
-      allowAnonymousRead: false
+    roleBased:
+      roles:
+        global:
+          - name: "admin"
+            description: "Marvin master"
+            permission:
+              - "Overall/Administer"
+            assignments:
+              - "chocolateen"
+          - name: "ape"
+            description: "Pedagogical team member"
+            permission:
+              - "Job/Build"
+              - "Job/Workspace"
+            assignments:
+              - "i_dont_know"
+          - name: "gorilla"
+            description: "Group Obsessively Researching Innovation Linked to Learning and Accomplishment"
+            permission:
+              - "Job/Build"
+              - "Job/Read"
+              - "Job/Create"
+              - "Job/Delete"
+              - "Job/Configure"
+              - "Job/Move"
+            assignement:
+              - "vaugie_g"
+          - name: "Assistant"
+            permission:
+              - "Job/Read"
+              - "Job/Workspace"
+            assignement:
+              - "nasso"
+
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
