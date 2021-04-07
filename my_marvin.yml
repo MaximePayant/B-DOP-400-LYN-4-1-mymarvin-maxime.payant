@@ -42,14 +42,14 @@ jenkins:
               - "Job/Delete"
               - "Job/Configure"
               - "Job/Move"
-            assignement:
+            assignments:
               - "vaugie_g"
           - name: "assist"
             description: "Assistant"
             permissions:
               - "Job/Read"
               - "Job/Workspace"
-            assignement:
+            assignments:
               - "nasso"
   - remotingSecurity:
       enabled: true
