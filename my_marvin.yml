@@ -1,8 +1,5 @@
 jenkins:
   systemMessage: "Welcome to the Chocolatine-Powered Marvin Jenkins Instance."
-  agentProtocols:
-    - "JNLP4-connect"
-    - "Ping"
   securityRealm:
     local:
       allowsSignup: false
@@ -47,39 +44,13 @@ jenkins:
               - "Job/Move"
             assignement:
               - "vaugie_g"
-          - name: "Assistant"
+          - name: "assist"
+            description: "Assistant"
             permission:
               - "Job/Read"
               - "Job/Workspace"
             assignement:
               - "nasso"
-  crumbIssuer:
-    standard:
-      excludeClientIPFromCrumb: false
-    disableRememberMe: false
-    labelAtoms:
-      - name: "master"
-    markupFormatter: "plainText"
-    mode: NORMAL
-    myViewsTabBar: "standard"
-    numExecutors: 2
-    primaryView:
-      all:
-        name: "all"
-    projectNamingStrategy: "standard"
-    quietPeriod: 5
-    remotingSecurity:
-      enabled: true
-    scmCheckoutRetryCount: 0
-    slaveAgentPort: 50000
-    updateCenter:
-      sites:
-        - id: "default"
-          url: "https://updates.jenkins.io/update-center.json"
-    views:
-      - all:
-          name: "all"
-    viewsTabBar: "standard"
 jobs:
   - script: >
       job('Daily Dose of Satisfaction') {
@@ -89,75 +60,3 @@ jobs:
           shell('echo "This is your DDoS number $BUILD_NUMBER."')
         }
       }
-tool:
-  git:
-    installations:
-      - home: "git"
-        name: "Default"
-  mavenGlobalConfig:
-    globalSettingsProvider: "standard"
-    settingsProvider: "standard"
-security:
-  apiToken:
-    creationOfLegacyTokenEnabled: false
-    tokenGenerationOnCreationEnabled: false
-    usageStatisticsEnabled: true
-  globalJobDslSecurityConfiguration:
-    useScriptSecurity: true
-  sSHD:
-    port: -1
-unclassified:
-  buildDiscarders:
-    configuredBuildDiscarders:
-      - "jobBuildDiscarder"
-  buildStepOperation:
-    enabled: false
-  email-ext:
-    adminRequiredForTemplateTesting: false
-    allowUnregisteredEnabled: false
-    charset: "UTF-8"
-    debugMode: false
-    defaultBody: |-
-      $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
-
-      Check console output at $BUILD_URL to view the results.
-    defaultContentType: "text/plain"
-    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
-    defaultTriggerIds:
-      - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
-    mailAccount:
-      smtpPassword: "{AQAAABAAAAAQDWsBcpaoZwEzYdEBI4v4EnMnIiwSumHO9wSu/AotfZk=}"
-    maxAttachmentSize: -1
-    maxAttachmentSizeMb: -1
-    precedenceBulk: false
-    watchingEnabled: false
-  fingerprints:
-    fingerprintCleanupDisabled: false
-    storage: "file"
-  gitHubConfiguration:
-    apiRateLimitChecker: ThrottleForNormalize
-  gitHubPluginConfig:
-    hookUrl: "http://localhost:8080/github-webhook/"
-  gitSCM:
-    addGitTagAction: false
-    allowSecondFetch: false
-    createAccountBasedOnEmail: false
-    disableGitToolChooser: false
-    hideCredentials: false
-    showEntireCommitSummaryInChanges: false
-    useExistingAccountWithSameEmail: false
-  junitTestResultStorage:
-    storage: "file"
-  location:
-    adminAddress: "Adresse pas encore configurée <nobody@nowhere>"
-    url: "http://localhost:8080/"
-  mailer:
-    charset: "UTF-8"
-    useSsl: false
-    useTls: false
-  pollSCM:
-    pollingThreadCount: 10
-  timestamper:
-    allPipelines: false
-    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
-    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
