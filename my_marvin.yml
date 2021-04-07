@@ -51,7 +51,7 @@ jenkins:
               - "Job/Workspace"
             assignments:
               - "nasso"
-  - remotingSecurity:
-      enabled: true
+  remotingSecurity:
+    enabled: true
 jobs:
   - file: job_dsl.groovy
