@@ -22,20 +22,20 @@ jenkins:
         global:
           - name: "admin"
             description: "Marvin master"
-            permission:
+            permissions:
               - "Overall/Administer"
             assignments:
               - "chocolateen"
           - name: "ape"
             description: "Pedagogical team member"
-            permission:
+            permissions:
               - "Job/Build"
               - "Job/Workspace"
             assignments:
               - "i_dont_know"
           - name: "gorilla"
             description: "Group Obsessively Researching Innovation Linked to Learning and Accomplishment"
-            permission:
+            permissions:
               - "Job/Build"
               - "Job/Read"
               - "Job/Create"
@@ -46,17 +46,12 @@ jenkins:
               - "vaugie_g"
           - name: "assist"
             description: "Assistant"
-            permission:
+            permissions:
               - "Job/Read"
               - "Job/Workspace"
             assignement:
               - "nasso"
+  - remotingSecurity:
+      enabled: true
 jobs:
-  - script: >
-      job('Daily Dose of Satisfaction') {
-        steps {
-          shell('echo "Hello dear $NAME!"')
-          shell('date')
-          shell('echo "This is your DDoS number $BUILD_NUMBER."')
-        }
-      }
+  - file: job_dsl.groovy
