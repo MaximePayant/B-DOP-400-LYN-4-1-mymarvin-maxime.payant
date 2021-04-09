@@ -29,29 +29,29 @@ jenkins:
           - name: "ape"
             description: "Pedagogical team member"
             permissions:
-              - "Jobs/Build"
-              - "Jobs/Workspace"
+              - "Job/Build"
+              - "Job/Workspace"
             assignments:
               - "i_dont_know"
           - name: "gorilla"
             description: "Group Obsessively Researching Innovation Linked to Learning and Accomplishment"
             permissions:
-              - "Jobs/Build"
-              - "Jobs/Read"
-              - "Jobs/Create"
-              - "Jobs/Delete"
-              - "Jobs/Configure"
-              - "Jobs/Move"
+              - "Job/Build"
+              - "Job/Read"
+              - "Job/Create"
+              - "Job/Delete"
+              - "Job/Configure"
+              - "Job/Move"
+              - "Job/Workspace"
+              - "Job/Cancel"
             assignments:
               - "vaugie_g"
           - name: "assist"
             description: "Assistant"
             permissions:
-              - "Jobs/Read"
-              - "Jobs/Workspace"
+              - "Job/Read"
+              - "Job/Workspace"
             assignments:
               - "nasso"
   remotingSecurity:
     enabled: true
-jobs:
-  - file: job_dsl.groovy
