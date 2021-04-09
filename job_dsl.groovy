@@ -1,7 +1,16 @@
-job('Daily Dose of Satisfaction') {
-          steps {
-            shell('echo "Hello dear $NAME!"')
-            shell('date')
-            shell('echo "This is your DDoS number $BUILD_NUMBER."')
-          }
+folder('/Tools') {
+    description("Folder for miscellaneous tools.")
+}
+job('/Tools/clone-repository') {
+    parameters {
+        stringParam("GIT_REPOSITORY_URL", "", "Git URL of the repository to clone")
+    }
+    steps {
+      shell('git clone $GIT_REPOSITORY_URL')
+    }
+    wrappers {
+        preBuildCleanup {
+            deleteDirectories()
         }
+    }
+}
