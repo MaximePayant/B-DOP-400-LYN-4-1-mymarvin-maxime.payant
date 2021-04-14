@@ -23,9 +23,18 @@ job('/Tools/SEED') {
     steps {
         dsl {
             text("""
-                job("\${DISPLAY_NAME}") {
+                freeStyleJob("\${DISPLAY_NAME}") {
+                    scm {
+                        git("\${GITHUB_NAME}")
+                    }
+                    triggers {
+                        scm('@minute')
+                    }
                     steps {
-                        shell('echo "Hello World"')
+                        shell("make fclean")
+                        shell("make")
+                        shell("make tests_run")
+                        shell("make clean")
                     }
                     wrappers {
                         preBuildCleanup {
@@ -42,18 +51,3 @@ job('/Tools/SEED') {
         }
     }
 }
-
-
-// scm {
-//     git('$GITHUB_NAME')
-// }
-// trigger {
-//     scm('@minutes')
-//     githubPush()
-// }
-// steps {
-//     shell("make fclean")
-//     shell("make")
-//     shell("make tests_run")
-//     shell("make clean")
-// }
