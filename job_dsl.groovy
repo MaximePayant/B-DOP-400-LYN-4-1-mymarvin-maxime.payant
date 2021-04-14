@@ -14,13 +14,27 @@ job('/Tools/clone-repository') {
         }
     }
 }
+
 job('/Tools/SEED') {
     parameters {
-        stringParam("GITHUB_NAME", "", "GitHub repository owner/repo_name (e.g.: \"EpitechIT31000/chocolatine\")")
+        stringParam("GITHUB_NAME", "", 'GitHub repository owner/repo_name (e.g.: "EpitechIT31000/chocolatine")')
         stringParam("DISPLAY_NAME", "", "Display name for the job")
     }
     steps {
-        dsl {}
+        dsl {
+            text("""
+                job("\${DISPLAY_NAME}") {
+                    steps {
+                        shell('echo "Hello World"')
+                    }
+                    wrappers {
+                        preBuildCleanup {
+                            deleteDirectories()
+                        }
+                    }
+                }
+            """)
+        }
     }
     wrappers {
         preBuildCleanup {
@@ -28,3 +42,18 @@ job('/Tools/SEED') {
         }
     }
 }
+
+
+// scm {
+//     git('$GITHUB_NAME')
+// }
+// trigger {
+//     scm('@minutes')
+//     githubPush()
+// }
+// steps {
+//     shell("make fclean")
+//     shell("make")
+//     shell("make tests_run")
+//     shell("make clean")
+// }
