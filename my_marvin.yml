@@ -30,7 +30,8 @@ jenkins:
             description: "Pedagogical team member"
             permissions:
               - "Job/Build"
-              - "Job/Workspace"
+              - "Job/Read"
+              - "Overall/Read"
             assignments:
               - "i_dont_know"
           - name: "gorilla"
@@ -44,6 +45,7 @@ jenkins:
               - "Job/Move"
               - "Job/Workspace"
               - "Job/Cancel"
+              - "Overall/Read"
             assignments:
               - "vaugie_g"
           - name: "assist"
@@ -51,6 +53,7 @@ jenkins:
             permissions:
               - "Job/Read"
               - "Job/Workspace"
+              - "Overall/Read"
             assignments:
               - "nasso"
   remotingSecurity:
