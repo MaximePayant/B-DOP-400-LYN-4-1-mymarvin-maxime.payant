@@ -25,7 +25,7 @@ job('/Tools/SEED') {
             text("""
                 freeStyleJob("\${DISPLAY_NAME}") {
                     scm {
-                        git("\${GITHUB_NAME}")
+                        github("\${GITHUB_NAME}")
                     }
                     triggers {
                         scm('@minute')
