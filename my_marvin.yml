@@ -31,6 +31,7 @@ jenkins:
             permissions:
               - "Job/Build"
               - "Job/Read"
+              - "Job/Workspace"
               - "Overall/Read"
             assignments:
               - "i_dont_know"

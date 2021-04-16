@@ -28,7 +28,7 @@ job('/Tools/SEED') {
                         github("\${GITHUB_NAME}")
                     }
                     triggers {
-                        scm('@minute')
+                        scm('* * * * *')
                     }
                     steps {
                         shell("make fclean")
